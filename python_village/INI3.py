@@ -6,8 +6,9 @@ In other words, we should include elements s[b] and s[d] in our slice.
 string = input("Provide a string to splice: ")
 splice_sites = input("Provide splice sites: ")
 ss_list = list(map(int, splice_sites.split()))
+print(ss_list)
 
-for ss in range(0, len(ss_list)-1, 2):
-    ss_pair = (ss_list[ss:ss+2])
+for splice_site in range(0, len(ss_list)-1, 2):
+    ss_pair = ss_list[splice_site:splice_site+2]
     word = string[ss_pair[0]:ss_pair[1]+1] # inclusive
-    print(word, end=" ")
+    print(word)
