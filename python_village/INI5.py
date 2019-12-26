@@ -6,7 +6,6 @@ Return: A file containing all the even-numbered lines from the original file.
 counter = 1
 with open('python_village/INI5_input') as f:
     for line in f: 
-        line = line.rstrip()
         if counter % 2 == 0:
-            print(line)
+            print(line.rstrip())
         counter = counter + 1
