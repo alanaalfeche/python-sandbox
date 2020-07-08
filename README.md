@@ -5,8 +5,8 @@
 Rosalind is a platform for learning bioinformatics and programming through problem solving. 
 Link: http://rosalind.info/problems/list-view/ 
 
-2. extra_practice/
-Archived solutions to some interesting problems
+2. extra_practice/ 
+https://runestone.academy/runestone/books/published/pythonds/index.html
 
 3. leetcode/blind_75/
 My solutions to curated list of 75 LeetCode questions: https://leetcode.com/list/xoqag3yj/
