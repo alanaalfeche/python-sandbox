@@ -22,4 +22,24 @@ def reverse(num: int) -> int:
     else:
         return rev_num
 
+def reverse2(num: int) -> int:
+    """
+    Runtime: 48 ms, faster than 16.29% of Python3 online submissions for Reverse Integer.
+    Memory Usage: 13.6 MB, less than 96.37% of Python3 online submissions for Reverse Integer.
+    """
+    sign = [1, -1][num < 0] # returns [1, -1][0] if position, [1, -1][1] if negative
+    rev = sign * int(str(abs(num))[::-1])
+    return rev if -(2**31)-1 < rev < 2**31 else 0
+
+def reverse3(num: int) -> int:
+    rev = 0
+    while num > 0:
+        rev = (10*rev) + num % 10
+        num //= 10
+        # // int
+        # /  float
+    return rev
+
 print(reverse(-12))
+print(reverse2(-123))
+print(reverse3(1234))
