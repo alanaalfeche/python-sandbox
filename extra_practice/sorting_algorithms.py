@@ -12,8 +12,6 @@ def bubble_sort(alist):
                 alist[j], alist[j+1] = alist[j+1], alist[j]
     return alist
 
-print(bubble_sort([19, 13, 6, 2, 18, 8]))
-
 def selection_sort(alist):
     """
     Another in-place sorting algorithm like bubble with a worst, best, and average complexity of O(n^2).
@@ -31,4 +29,30 @@ def selection_sort(alist):
         alist[i], alist[min_index] = alist[min_index], alist[i]
     return alist
 
-print(selection_sort([19, 13, 6, 2, 18, 8]))
+def insertion_sort(alist):
+    """
+    Also an in-place sorting algorithm where it creates a sorted list to the left as it iterates through the list to the right. 
+    Similar to bs and ss, it also have a complexity of O(n^2).  
+    """
+    for i in range(1, len(alist)):
+        key = alist[i]
+        j = i - 1
+
+        while j >= 0 and alist[j] > key:
+            alist[j+1] = alist[j]
+            j -= 1
+        
+        alist[j + 1] = key
+
+    return alist
+
+def main():
+    alist = [4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47]
+    bb = bubble_sort(alist)
+    ss = selection_sort(alist)
+    ts = insertion_sort(alist)
+
+    if bb == ss == ts:
+        print('Success!')
+
+main()
