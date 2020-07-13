@@ -73,14 +73,44 @@ def shell_sort(alist):
 
     return alist
 
+def merge(left, right):
+    result = []
+    i, j = 0, 0 
+    while i < len(left) and j < len(right):
+        if left[i] < right [j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+
+    return result
+
+def merge_sort(alist):
+    """
+    Merge sort is a divide-and-conquer algorithm with a worst case of O(n log n) time. 
+    `log n` from splitting the unsorted list into n sublits, each containing one element 
+    `n` from repeatedly merging sublists to produce new sorted sublits until there is only one sorted list remaining.  
+    """
+    if len(alist) < 2:
+        return alist
+    else:
+        mid = len(alist) // 2
+        left = merge_sort(alist[:mid])
+        right = merge_sort(alist[mid:])
+        return merge(left, right)
+
 def main():
     alist = [4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47]
     bb = bubble_sort(alist)
     sl = selection_sort(alist)
     ts = insertion_sort(alist)
     ss = shell_sort(alist)
-    
-    if bb == sl == ts == ss:
+    ms = merge_sort(alist)
+
+    if bb == sl == ts == ss == ms:
         print('Success!')
 
 main()
