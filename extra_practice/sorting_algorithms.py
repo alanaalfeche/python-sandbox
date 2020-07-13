@@ -3,7 +3,7 @@
 def bubble_sort(alist):
     """
     In-place sorting algorithm that has an average complexity of O(n^2). 
-    Algorithm that generates the most "swaps" but can be efficient if list is sorted. 
+    It iterates through the list, comparing each pair of adjacent values. It generates the most "swaps".
     We can also the "swaps" as an indicator that a list is sorted. 
     """
     for i in range(len(alist)):
@@ -85,7 +85,6 @@ def merge(left, right):
             j += 1
     result.extend(left[i:])
     result.extend(right[j:])
-
     return result
 
 def merge_sort(alist):
@@ -102,6 +101,32 @@ def merge_sort(alist):
         right = merge_sort(alist[mid:])
         return merge(left, right)
 
+def quick_sort(alist):
+    """
+    Another divide-and-conquer algorithm with an average case of O(n log n) and a worst case of O(n^2) for already sorted list. 
+    It uses a "pivot" which divides the list into two halves in such a way that elements in left half are smaller than the pivot and elements in right half are greater than the pivot.
+    The most commonly used pivot is the last element.
+    Source: https://www.educative.io/edpresso/how-to-implement-quicksort-in-python
+    """
+    elements = len(alist)
+    partition = 0
+
+    if elements < 2:
+        return alist
+
+    for i in range(1, elements):
+        if alist[i] <= alist[0]:
+            partition += 1
+            alist[i], alist[partition] = alist[partition], alist[i]
+
+    alist[0], alist[partition] = alist[partition], alist[0]
+
+    left = quick_sort(alist[0:partition])
+    right = quick_sort(alist[partition+1:elements])
+
+    result = left + [alist[partition]] + right
+    return alist 
+
 def main():
     alist = [4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47]
     bb = bubble_sort(alist)
@@ -109,8 +134,9 @@ def main():
     ts = insertion_sort(alist)
     ss = shell_sort(alist)
     ms = merge_sort(alist)
+    qs = quick_sort(alist)
 
-    if bb == sl == ts == ss == ms:
+    if bb == sl == ts == ss == ms == qs:
         print('Success!')
 
 main()
