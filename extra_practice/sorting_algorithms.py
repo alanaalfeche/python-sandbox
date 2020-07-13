@@ -33,26 +33,54 @@ def insertion_sort(alist):
     """
     Also an in-place sorting algorithm where it creates a sorted list to the left as it iterates through the list to the right. 
     Similar to bs and ss, it also have a complexity of O(n^2).  
-    """
-    for i in range(1, len(alist)):
+    """    
+    for i in range(len(alist)):
         key = alist[i]
-        j = i - 1
+        idx = i - 1
 
-        while j >= 0 and alist[j] > key:
-            alist[j+1] = alist[j]
-            j -= 1
+        while idx >= 0 and alist[idx] > key:
+            alist[idx+1] = alist[idx]
+            idx -= 1
         
-        alist[j + 1] = key
+        alist[idx + 1] = key
+
+    return alist
+
+def gap_insertion_sort(alist, start, gap):
+    for i in range(start+gap, len(alist), gap):
+        key = alist[i]
+        idx = i
+
+        while idx >= gap and alist[idx-gap] > key:
+            alist[idx] = alist[idx-gap]
+            idx = idx - gap
+
+        alist[idx] = key
+
+    return alist
+
+def shell_sort(alist):
+    """
+    A version of insertion sort where gap-indexed values is sorted where gap = len(sublist/x), usually x = 2. 
+    Shell sort is said to be unstable because swapping is involved so original order is not conserved. 
+    Average complexity varies between O(n^3/2) and O(n^5/2) with a worst complexity of O(n^2).
+    """
+    sublist_count = len(alist) // 2
+    while sublist_count > 0:
+        for i in range(sublist_count):
+            gap_insertion_sort(alist, i, sublist_count)
+        sublist_count = sublist_count // 2
 
     return alist
 
 def main():
     alist = [4, 22, 41, 40, 27, 30, 36, 16, 42, 37, 14, 39, 3, 6, 34, 9, 21, 2, 29, 47]
     bb = bubble_sort(alist)
-    ss = selection_sort(alist)
+    sl = selection_sort(alist)
     ts = insertion_sort(alist)
-
-    if bb == ss == ts:
+    ss = shell_sort(alist)
+    
+    if bb == sl == ts == ss:
         print('Success!')
 
 main()
