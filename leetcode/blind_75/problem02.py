@@ -16,17 +16,34 @@ def solution(text: str) -> int:
     Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for Longest Substring Without Repeating Characters.
     """
     char_map = {}
+    len_pref = 0
     start = 0
-    len_string = 0
 
     for i, char in enumerate(text):
         if char in char_map and char_map[char] >= start:
             start = char_map[char] + 1
         else:
-            len_string = max(len_string, i - start + 1)
+            len_pref = max(len_pref, i - start + 1)
         
         char_map[char] = i
         
-    return len_string
+    return len_pref
 
 print(solution("tmmzuxt"))
+
+# Uses list instead of hashmap 
+def longest_substring(text):
+    alist = []
+    temp = 0
+    
+    for i, char in enumerate(text):
+        if char not in alist:
+            alist.append(char)
+            temp += 1
+        else:
+            temp = max(temp, len(alist))
+            alist = []
+            alist.append(char)
+    return temp - 1
+
+print(longest_substring("tmmzuxt"))
