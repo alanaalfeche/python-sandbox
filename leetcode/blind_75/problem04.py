@@ -19,23 +19,23 @@ def time_limited_solution(height: List[int]) -> int:
 
 print(time_limited_solution([1,8,6,2,5,4,8,3,7]))
 
-def optimized_solution(height: List[int]) -> int:
+def optimized_solution(alist: List[int]) -> int:
     """Optimized first solution to prevent calculate all possible areas by limiting scope
 
-    Runtime: 136 ms, faster than 47.78% of Python3 online submissions for Container With Most Water.
-    Memory Usage: 14.5 MB, less than 32.63% of Python3 online submissions for Container With Most Water.
+    Runtime: 132 ms, faster than 76.23% of Python3 online submissions for Container With Most Water.
+    Memory Usage: 15.4 MB, less than 34.56% of Python3 online submissions for Container With Most Water.
     """
-    size = len(height)
-    low = 0
-    high = size - 1
+    if len(alist) < 2:
+        return 
+    
+    low, high = 0, len(alist) - 1
     area = 0
-
-    while low < high:
-        area = max(area, min(height[high], height[low]) * (high-low))
-        if height[low] < height[high]:
-            low += 1
-        else:
-            high -= 1
+    
+    while low < high: 
+        area = max(area, min(alist[high], alist[low]) * (high - low))
+        if alist[low] < alist[high]: low += 1
+        else: high -= 1
+            
     return area
 
 print(optimized_solution([1,8,6,2,5,4,8,3,7]))
