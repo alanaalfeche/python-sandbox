@@ -1,6 +1,9 @@
 """Problem 6 - Remove Nth Node from End of List
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
+Runtime: 36 ms, faster than 58.41% of Python3 online submissions for Remove Nth Node From End of List.
+Memory Usage: 13.8 MB, less than 61.47% of Python3 online submissions for Remove Nth Node From End of List.
+
 Given a linked list, remove the n-th node from the end of list and return its head.
 """
 class ListNode:
@@ -9,9 +12,9 @@ class ListNode:
         self.next = None
 
 def solution(head: ListNode, n: int) -> ListNode:
-    dummy = ListNode(0)
-    dummy.next = head # [0, [1, ...]]
-    fast = slow = dummy
+    node = ListNode(0)
+    node.next = head
+    fast = slow = node
 
     for _ in range(n):
         fast = fast.next
@@ -22,7 +25,7 @@ def solution(head: ListNode, n: int) -> ListNode:
 
     slow.next = slow.next.next
 
-    return dummy.next
+    return node.next
 
 last = None
 for i in range(5, 0, -1):
