@@ -11,16 +11,16 @@ class ListNode:
         self.next = next
 
 def merge_list(l1, l2):
-    head = point = ListNode(None)
+    head = dummy = ListNode(None)
     while l1 and l2:
         if l1.val < l2.val:
-            point.next = l1
+            dummy.next = l1
             l1 = l1.next 
         else: 
-            point.next = l2
+            dummy.next = l2
             l2 = l2.next
-        point = point.next
-    point.next = l1 or l2
+        dummy = dummy.next
+    dummy.next = l1 or l2
     return head.next
 
 def merge_k_lists(lists):

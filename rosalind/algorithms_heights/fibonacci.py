@@ -1,5 +1,5 @@
 '''
-Fiboannci numbers forms a fibonacci sequence such that each number F(n) is the sum of the two preceding numbers.
+Fibonacci numbers forms a fibonacci sequence such that each number F(n) is the sum of the two preceding numbers.
 e.g. F(n) = F(n-1) + F(n-2) where F(0) = 0 and F(1) = 1
 
 Fibonacci was introduced to the Western Mathematics by Leonardo of Pisa. 

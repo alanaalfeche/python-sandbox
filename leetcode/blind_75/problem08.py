@@ -18,22 +18,22 @@ def solution(l1, l2):
 	the lesser of the two to the return list.
 
     Time Complexity: O(n+m)
-    Space Complexity: O(n+m) + dummy node
+    Space Complexity: O(n+m) + slow node
     Runtime: 36 ms, faster than 62.00% of Python3 online submissions for Merge Two Sorted Lists.
     Memory Usage: 12.7 MB, less than 100.00% of Python3 online submissions for Merge Two Sorted Lists.
     """
-    dummy = ret = ListNode(None)
+    head = dummy = ListNode(None)
     while l1 and l2:
         if l1.val < l2.val:
-            ret.next = l1
-            ret = l1       
+            dummy.next = l1
+            dummy = l1       
             l1 = l1.next 
         else: 
-            ret.next = l1
-            ret = l2
+            dummy.next = l2
+            dummy = l2
             l2 = l2.next
-    ret.next = l1 or l2
-    return dummy.next
+    dummy.next = l1 or l2
+    return head.next
 
 l1 = None
 for i in 4, 2, 1:

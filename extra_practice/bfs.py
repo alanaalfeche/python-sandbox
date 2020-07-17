@@ -15,14 +15,13 @@ graph = {
     'F' : []
 }
 
-visited = []
-queue = []
 
-def bfs(visited, graph, node):
+def bfs(graph, node):
     """
     BFS is a tree traveral algorithm that traverses the tree level by level. 
     Time complexity for BFS on a graph is O(V + E); where V is the number of vertices and E is the number of edges.
     """
+    visited, queue = [], []
     visited.append(node)
     queue.append(node)
     result = ""
@@ -38,5 +37,5 @@ def bfs(visited, graph, node):
     
     return result
 
-ans = bfs(visited, graph, 'A')
+ans = bfs(graph, 'A')
 print(ans)

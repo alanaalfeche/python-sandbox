@@ -46,10 +46,8 @@ class Graph:
         self.num += 1
     
     def add_edge(self, fvertex, tvertex, weight=0):
-        if fvertex not in self.vertex_list:
-            self.add_vertex(fvertex)
-        if tvertex not in self.vertex_list:
-            self.add_vertex(tvertex)
+        if fvertex not in self.vertex_list and tvertex not in self.vertex_list:
+            return None
         self.vertex_list[fvertex].add_neighbor(self.vertex_list[tvertex], weight)
 
     def __contains__(self, n):

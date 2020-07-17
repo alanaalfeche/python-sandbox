@@ -18,7 +18,7 @@ class LinkedList:
 
     def insert(self, x):  # O(1)
         node = Node(x)
-        if self.length == 0:
+        if self.head is None:
             self.head = self.tail = node
         else:
             self.head.prev = node
@@ -27,25 +27,25 @@ class LinkedList:
         self.length += 1
 
     def delete(self, x): # O(n) because of search + delete
-        curNode = self.head
-        while curNode != None:
-            if curNode.data == x:
-                if curNode.prev != None:
-                    curNode.prev.next = curNode.next
+        node = self.head
+        while node != None:
+            if node.data == x:
+                if node.prev != None:
+                    node.prev.next = node.next
                 else:
-                    self.head = curNode.next
-                if curNode.next != None:
-                    curNode.next.prev = curNode.prev
+                    self.head = node.next
+                if node.next != None:
+                    node.next.prev = node.prev
                 else:
-                    self.tail = curNode.prev
+                    self.tail = node.prev
                 self.length -=1
-            curNode = curNode.next
+            node = node.next
 
     def search(self, x): # O(n)
         count = 1
-        curNode = self.head
-        while curNode != None and curNode.data != x:
-            curNode = curNode.next
+        node = self.head
+        while node != None and node.data != x:
+            node = node.next
             count += 1
         return count
 
