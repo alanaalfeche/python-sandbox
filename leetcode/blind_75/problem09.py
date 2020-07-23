@@ -4,33 +4,25 @@ https://leetcode.com/problems/merge-k-sorted-lists/
 
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 """
+from heapq import heappush, heappop
+
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-def merge_list(l1, l2):
-    head = dummy = ListNode(None)
-    while l1 and l2:
-        if l1.val < l2.val:
-            dummy.next = l1
-            l1 = l1.next 
-        else: 
-            dummy.next = l2
-            l2 = l2.next
-        dummy = dummy.next
-    dummy.next = l1 or l2
-    return head.next
-
 def merge_k_lists(lists):
-    if len(lists) < 2:
-        return lists[0]
-    else:
-        mid = len(lists) // 2
-        left = merge_k_lists(lists[:mid]) # 0, 1      [5, 4, 1]
-        right = merge_k_lists(lists[mid:]) # 1, 3     [4, 3, 1] [6, 2]
-        return merge_list(left, right)
+    heap = []
+    for l in lists:
+        while l:
+            heappush(heap, l.val)
+            l = l.next
+    dummy = head = ListNode(None) # if empty list, it returns None
+    while heap:
+        dummy.next = ListNode(heappop(heap))
+        dummy = dummy.next
+    return head.next
 
 l1 = None
 for i in 5, 4, 1:
