@@ -24,8 +24,7 @@ print(brute_force_solution([2222222,2222222], 4444444))
 # Improved Solution:
 def hash_map_solution(nums: List[int], target: int) -> List[int]:
     """Leverage constant lookup of hash map to return the pair
-    Authored by NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem01.py
-
+    
     Time Complexity: n for traversing the list
     Space Complexity: n for extra space required for the hash table
     Runtime: 48 ms, faster than 78.72% of Python3 online submissions for Two Sum.
