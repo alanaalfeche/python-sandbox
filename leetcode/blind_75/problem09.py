@@ -1,48 +1,39 @@
-"""
-Problem 23 - Merge k Sorted Lists
-https://leetcode.com/problems/merge-k-sorted-lists/
+'''
+Problem 33. Search in Rotated Sorted Array
+https://leetcode.com/problems/search-in-rotated-sorted-array/
 
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
-"""
-from heapq import heappush, heappop
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+You may assume no duplicate exists in the array.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+'''
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+def search(nums, target):
+    start = 0
+    end = len(nums) - 1
+    while(start <= end):
+        mid = (start + end) // 2
+        if target == nums[mid]:
+            return mid
+        elif target < nums[mid]:
+            if target < nums[start] and nums[start] <= nums[mid]:
+                start = mid + 1
+            else:
+                end = mid - 1
+        elif target > nums[mid]:
+            if target > nums[end] and nums[end] > nums[mid]:
+                end = mid - 1
+            else:
+                start = mid + 1
+    return -1 
 
-def merge_k_lists(lists):
-    heap = []
-    for l in lists:
-        while l:
-            heappush(heap, l.val)
-            l = l.next
-    dummy = head = ListNode(None) # if empty list, it returns None
-    while heap:
-        dummy.next = ListNode(heappop(heap))
-        dummy = dummy.next
-    return head.next
 
-l1 = None
-for i in 5, 4, 1:
-    node = ListNode(i)
-    node.next = l1
-    l1 = node
-
-l2 = None
-for i in 4, 3, 1:
-    node = ListNode(i)
-    node.next = l2
-    l2 = node
-
-l3 = None
-for i in 6, 2:
-    node = ListNode(i)
-    node.next = l3
-    l3 = node
-
-answer = merge_k_lists([l1, l2, l3])
-for _ in range(8):
-    print(answer.val)
-    answer = answer.next
+nums = [4,5,6,7,0,1,2]
+target = 0
+expected = 4       
+actual = search(nums, target)
+print(expected == actual)
