@@ -1,42 +1,31 @@
-"""
-Problem 8 - Merge Two Sorted Lists
-https://leetcode.com/problems/merge-two-sorted-lists/
+'''
+Problem 23 - Merge k Sorted Lists
+https://leetcode.com/problems/merge-k-sorted-lists/
 
-Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+'''
+from heapq import heappush, heappop
 
-Solution Authored By NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem08.py
-"""
 
 class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-def solution(l1, l2):
-    """
-	Move along both linked lists, comparing the nodes at each point and linking
-	the lesser of the two to the return list.
-
-    Time Complexity: O(n+m)
-    Space Complexity: O(n+m) + slow node
-    Runtime: 36 ms, faster than 62.00% of Python3 online submissions for Merge Two Sorted Lists.
-    Memory Usage: 12.7 MB, less than 100.00% of Python3 online submissions for Merge Two Sorted Lists.
-    """
-    head = dummy = ListNode(None)
-    while l1 and l2:
-        if l1.val < l2.val:
-            dummy.next = l1
-            dummy = l1       
-            l1 = l1.next 
-        else: 
-            dummy.next = l2
-            dummy = l2
-            l2 = l2.next
-    dummy.next = l1 or l2
+def merge_k_lists(lists):
+    heap = []
+    for l in lists:
+        while l:
+            heappush(heap, l.val)
+            l = l.next
+    dummy = head = ListNode(None) # if empty list, it returns None
+    while heap:
+        dummy.next = ListNode(heappop(heap))
+        dummy = dummy.next
     return head.next
 
 l1 = None
-for i in 4, 2, 1:
+for i in 5, 4, 1:
     node = ListNode(i)
     node.next = l1
     l1 = node
@@ -47,4 +36,13 @@ for i in 4, 3, 1:
     node.next = l2
     l2 = node
 
-print(solution(l1, l2))
+l3 = None
+for i in 6, 2:
+    node = ListNode(i)
+    node.next = l3
+    l3 = node
+
+answer = merge_k_lists([l1, l2, l3])
+for _ in range(8):
+    print(answer.val)
+    answer = answer.next
