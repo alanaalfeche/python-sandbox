@@ -1,39 +1,34 @@
 '''
-Problem 33. Search in Rotated Sorted Array
-https://leetcode.com/problems/search-in-rotated-sorted-array/
+Problem 39. Combination Sum
+https://leetcode.com/problems/combination-sum/
 
-Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
 
-You are given a target value to search. If found in the array return its index, otherwise return -1.
-
-You may assume no duplicate exists in the array.
-
-Your algorithm's runtime complexity must be in the order of O(log n).
+The same repeated number may be chosen from candidates unlimited number of times.
 '''
 
 
-def search(nums, target):
-    start = 0
-    end = len(nums) - 1
-    while(start <= end):
-        mid = (start + end) // 2
-        if target == nums[mid]:
-            return mid
-        elif target < nums[mid]:
-            if target < nums[start] and nums[start] <= nums[mid]:
-                start = mid + 1
-            else:
-                end = mid - 1
-        elif target > nums[mid]:
-            if target > nums[end] and nums[end] > nums[mid]:
-                end = mid - 1
-            else:
-                start = mid + 1
-    return -1 
+def combination_sum(candidates, target):
+    result = []
 
+    def helper(arr, combo, total, target, start):
+        if total > target:
+            return 
+        elif total == target:
+            result.append(combo)
+            return
+        else:
+            for i in range(start, len(arr)):
+                helper(arr, combo + [arr[i]], total + arr[i], target, i)
 
-nums = [4,5,6,7,0,1,2]
-target = 0
-expected = 4       
-actual = search(nums, target)
+    helper(sorted(candidates), [], 0, target, 0)
+    return result
+
+candidates = [2,3,6,7]
+target = 7
+expected = [
+  [2,2,3],
+  [7]
+]       
+actual = combination_sum(candidates, target)
 print(expected == actual)
