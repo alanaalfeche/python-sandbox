@@ -3,37 +3,30 @@ Problem 49. Group Anagrams
 https://leetcode.com/problems/group-anagrams/
 
 Given an array of strings, group anagrams together.
+
+Solution authored by NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem13.py
 '''
 
 
 def group_anagram(strs):
-    strs_sorted = []
-    for s in strs:
-        strs_sorted.append(''.join(sorted(s)))
+	anagrams = {}
+	for s in strs:
+		characters = [0] * 26
+		for char in s:
+			characters[ord(char) - ord('a')] += 1
+		tup = tuple(characters)
+		'''
+		Why do we have to convert characters type list to type tuple?
 
-    anagrams = {}
-    for index, s in enumerate(strs_sorted):
-        if s not in anagrams:
-            anagrams[s] = [index]
-        else:
-            anagrams[s].append(index)
+		The builtin list type should not be used as a dictionary key.
+		Note that since tuples are immutable, they do not run into the troubles of lists - they can be hashed by their contents without worries about modification. 
+		Thus, in Python, they provide a valid __hash__ method, and are thus usable as dictionary keys.
 
-    result = []
-    for group in anagrams.values():
-        sub_group = []
-        for value in group:
-            sub_group.append(strs[value])
-        result.append(sub_group)
-
-    return result
+		https://wiki.python.org/moin/DictionaryKeys		
+		'''
+		anagrams[tup] = anagrams.get(tup, []) + [s]
+	return anagrams.values()
 
 
 strings = ["eat", "tea", "tan", "ate", "nat", "bat"]
-expected = [
-    ["eat","tea","ate"],
-    ["tan","nat"],
-    ["bat"]
-]
-
-actual = group_anagram(strings)
-print(actual == expected)
+print(group_anagram(strings))
