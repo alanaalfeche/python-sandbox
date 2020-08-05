@@ -9,20 +9,26 @@ The same repeated number may be chosen from candidates unlimited number of times
 
 
 def combination_sum(candidates, target):
+    if not candidates:
+        return 
+
     result = []
 
-    def helper(arr, combo, total, target, start):
-        if total > target:
-            return 
-        elif total == target:
-            result.append(combo)
+    def dfs(candidates, combination, target, index):
+        if target == 0:
+            result.append(combination)
             return
         else:
-            for i in range(start, len(arr)):
-                helper(arr, combo + [arr[i]], total + arr[i], target, i)
+            for i in range(index, len(candidates)):
+                if candidates[i] > target:
+                    break
+                
+                dfs(candidates, combination + [candidates[i]], target - candidates[i], i)
 
-    helper(sorted(candidates), [], 0, target, 0)
+    dfs(sorted(candidates), [], target, 0)
+
     return result
+
 
 candidates = [2,3,6,7]
 target = 7
