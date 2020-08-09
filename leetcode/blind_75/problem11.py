@@ -39,9 +39,11 @@ def rotate(matrix):
     A_r = [7][8][9]      (A_r)^t = [7][4][1]
           [4][5][6]                [8][5][2] 
           [1][2][3]                [9][6][3]
+
+    More fun solutions: https://leetcode.com/problems/rotate-image/discuss/18884/Seven-Short-Solutions-(1-to-7-lines)
     '''
     for i in range(n):
-        for j in range(i + 1, n):
+        for j in range(i):
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
     return matrix
 
