@@ -1,38 +1,22 @@
-"""
-Problem 102. Binary Tree Level Order Traversal
-https://leetcode.com/problems/implement-trie-prefix-tree/
+'''
+105. Construct Binary Tree from Preorder and Inorder Traversal
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
-https://leetcode.com/problems/binary-tree-level-order-traversal/
-"""
+Given preorder and inorder traversal of a tree, construct the binary tree.
+'''
 
-# Definition for a binary tree node.
-class TreeNode(object):
+
+class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-class Solution(object):
-    def level_order(self, root: TreeNode) -> List[List[int]]:
-        # Runtime: 36 ms
-        # Memory Usage: 14.2 MB
 
-        if not root:
-            return []
-        
-        queue = [root]
-        result = []
-        
-        while queue:
-            parent = []
-            children = []
-            for node in queue:
-                parent.append(node.val)
-                if node.left:
-                    children.append(node.left)
-                if node.right:
-                    children.append(node.right)
-            result.append(parent)
-            queue = children
-        
-        return result
+def build_tree(preorder, inorder):
+    if inorder:
+        idx = inorder.index(preorder.pop(0))
+        root = TreeNode(inorder[idx])
+        root.left(self.build_tree(preorder, inorder[:idx]))
+        root.right(self.build_tree(preorder, inorder[idx+1:]))
+        return root
