@@ -7,7 +7,7 @@ Given a string S and a string T, find the minimum window in S which will contain
 
 def min_windows(s, t):
     size = len(t)
-    t_dict = {c:1 for c in list(t)} # can also use collections.Counter(t)
+    t_dict = {c:1 for c in list(t)}
 
     result = s
     x = 0
