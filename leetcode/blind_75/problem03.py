@@ -1,10 +1,12 @@
-'''
-Problem 3: Longest Palindromic Substring
+'''Problem 3: Longest Palindromic Substring
+
 https://leetcode.com/problems/longest-palindromic-substring
 
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 '''
-def brute_force_solution(text: str) -> str:
+
+
+def longest_palindrome(text):
     sub_text = ''
     for i in range(len(text)):
         for j in range(len(text), i, -1):
@@ -14,4 +16,8 @@ def brute_force_solution(text: str) -> str:
                 sub_text = text[i:j]
     return sub_text
     
-print(brute_force_solution("babad"))
+
+text = "babad"
+expected = "bab"
+actual = longest_palindrome(text)
+print(expected == actual)
