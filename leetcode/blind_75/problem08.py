@@ -1,5 +1,5 @@
-'''
-Problem 23 - Merge k Sorted Lists
+'''Problem 23: Merge k Sorted Lists
+
 https://leetcode.com/problems/merge-k-sorted-lists/
 
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
@@ -13,16 +13,21 @@ class ListNode:
         self.next = next
 
 def merge_k_lists(lists):
+    '''We use heap to keep a list of nodes in priority order at all times. 
+    
+    List can also be used for this problem but it requires sort() and reverse() after building the list. 
+    '''
     heap = []
     for l in lists:
         while l:
             heappush(heap, l.val)
             l = l.next
-    dummy = head = ListNode(None) # if empty list, it returns None
+    head = dummy = ListNode(None)
     while heap:
         dummy.next = ListNode(heappop(heap))
         dummy = dummy.next
     return head.next
+
 
 l1 = None
 for i in 5, 4, 1:
