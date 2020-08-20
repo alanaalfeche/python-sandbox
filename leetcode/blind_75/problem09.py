@@ -1,5 +1,5 @@
-'''
-Problem 33. Search in Rotated Sorted Array
+'''Problem 33: Search in Rotated Sorted Array
+
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
@@ -13,9 +13,8 @@ Your algorithm's runtime complexity must be in the order of O(log n).
 
 
 def search(nums, target):
-    start = 0
-    end = len(nums) - 1
-    while(start <= end):
+    start, end = 0, len(nums) - 1
+    while start <= end:
         mid = (start + end) // 2
         if target == nums[mid]:
             return mid
