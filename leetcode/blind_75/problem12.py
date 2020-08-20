@@ -1,5 +1,5 @@
-'''
-Problem 49. Group Anagrams
+'''Problem 49: Group Anagrams
+
 https://leetcode.com/problems/group-anagrams/
 
 Given an array of strings, group anagrams together.
@@ -19,7 +19,9 @@ def group_anagram(strs):
 		Why do we have to convert characters type list to type tuple?
 
 		The builtin list type should not be used as a dictionary key.
+		
 		Note that since tuples are immutable, they do not run into the troubles of lists - they can be hashed by their contents without worries about modification. 
+		
 		Thus, in Python, they provide a valid __hash__ method, and are thus usable as dictionary keys.
 
 		https://wiki.python.org/moin/DictionaryKeys		
