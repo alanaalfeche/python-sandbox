@@ -1,5 +1,5 @@
-'''
-Problem 100. Same Tree
+'''Problem 100: Same Tree
+
 https://leetcode.com/problems/same-tree/
 
 Given two binary trees, write a function to check if they are the same or not.
@@ -8,7 +8,8 @@ Two binary trees are considered the same if they are structurally identical and 
 '''
 
 
-def is_same_tree(p, q):     
+def is_same_tree(p, q):
+    '''This algorithm uses recursion to compare the left and right leaf of the tree.'''     
     # both None  
     if not p and not q:
         return True
@@ -18,5 +19,5 @@ def is_same_tree(p, q):
     # if root values are different
     if p.val != q.val:
         return False
-    return self.is_same_tree(p.right, q.right) and self.is_same_tree(p.left, q.left)
+    return self.is_same_tree(p.left, q.left) and self.is_same_tree(p.right, q.right)
     
