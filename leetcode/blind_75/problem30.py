@@ -1,5 +1,5 @@
-'''
-Problem 125. Valid Palindrome
+'''Problem 125: Valid Palindrome
+
 https://leetcode.com/problems/valid-palindrome/
 
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
@@ -7,7 +7,9 @@ Given a string, determine if it is a palindrome, considering only alphanumeric c
 
 
 def is_palindrome(s) -> bool:
-    # Authored By NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem32.py
+    '''Authored By NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem32.py
+    
+    '''
     left, right = 0, len(s) - 1
     while left < right:
         if not s[left].isalnum():
