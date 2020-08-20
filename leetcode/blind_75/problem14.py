@@ -1,9 +1,10 @@
-'''
-Problem 14. Spiral Matrix
+'''Problem 14: Spiral Matrix
+
 https://leetcode.com/problems/spiral-matrix/
 
 Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
 '''
+
 
 def spiral_order(matrix):
   '''
@@ -46,6 +47,33 @@ matrix = [
   [5, 6, 7, 8],
   [9,10,11,12]
 ]
+'''
+// line 39
+result = [1, 2, 3, 4]
+matrix = [
+  [5, 6, 7, 8],
+  [9,10,11,12]
+
+]
+// line 40
+matrix = [
+  [9, 5],
+  [10, 6],
+  [11, 7],
+  [12, 8]
+]
+//line 41
+matrix = [
+  [12, 8],
+  [11, 7],
+  [10, 6],
+  [9, 5]
+]
+// line 39
+result = [1, 2, 3, 4, 8, 12]
+
+and so on...
+'''
 
 expected = [1,2,3,4,8,12,11,10,9,5,6,7]
 actual = spiral_order(matrix)
