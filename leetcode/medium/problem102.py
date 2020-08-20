@@ -1,9 +1,10 @@
-"""
-Problem 102. Binary Tree Level Order Traversal
-https://leetcode.com/problems/implement-trie-prefix-tree/
+'''Problem 102. Binary Tree Level Order Traversal
 
 https://leetcode.com/problems/binary-tree-level-order-traversal/
-"""
+
+Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+'''
+
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -12,20 +13,16 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
+
 class Solution(object):
     def level_order(self, root: TreeNode) -> List[List[int]]:
-        # Runtime: 36 ms
-        # Memory Usage: 14.2 MB
-
         if not root:
             return []
         
         queue = [root]
         result = []
-        
         while queue:
-            parent = []
-            children = []
+            parent, children = [], []
             for node in queue:
                 parent.append(node.val)
                 if node.left:
