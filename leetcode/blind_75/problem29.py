@@ -1,5 +1,4 @@
-'''
-Problem 29. Binary Tree Maximum Path Sum
+'''Problem 29: Binary Tree Maximum Path Sum
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
 Given a non-empty binary tree, find the maximum path sum.
@@ -18,12 +17,11 @@ class TreeNode:
 
 
 class Solution:
-    # source: https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/419793/Python-recursive-solution-beats-98-in-time-and-75-in-memory
+    '''This algorithm uses depth-first search to traverse through the tree, summing the values of individual nodes in a subtree. 
+
+    https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/419793/Python-recursive-solution-beats-98-in-time-and-75-in-memory
+    '''
     def max_path_sum(self, root: TreeNode) -> int:
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
         self.res = float('-inf')
         self.dfs(root)
         return self.res 
