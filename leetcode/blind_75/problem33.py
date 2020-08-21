@@ -1,5 +1,4 @@
-'''
-Problem 141. Linked List Cycle
+'''Problem 141. Linked List Cycle
 
 Given a linked list, determine if it has a cycle in it.
 
@@ -17,6 +16,10 @@ class ListNode:
 
 
 def has_cycle(head):
+    '''This algorithm uses fast-slow pattern to determine if there is a cycle in the list. 
+
+    The fast pointer traverses through the single-linked list at a faster rate than the slow pointer, hoping to catch slow at n-traversal. 
+    '''
     if not head:
         return False
     l1, l2 = head, head.next
