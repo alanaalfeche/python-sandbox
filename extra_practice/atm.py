@@ -7,8 +7,8 @@ def atm(withdraw):
                 result[denominations[i]] = 1 
             else:
                 result[denominations[i]] += 1
-            withdraw = withdraw - denominations[i]
-
-atm(110)
+            withdraw -= denominations[i]
+    return result
+print(atm(110))
 
     
