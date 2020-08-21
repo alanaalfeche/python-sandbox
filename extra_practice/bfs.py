@@ -25,16 +25,13 @@ def bfs(graph, node):
     visited.append(node)
     queue.append(node)
     result = ""
-
     while queue:
         s = queue.pop(0)
         result += s
-
         for neighbor in graph[s]:
             if neighbor not in visited:
                 visited.append(neighbor)
                 queue.append(neighbor)
-    
     return result
 
 ans = bfs(graph, 'A')
