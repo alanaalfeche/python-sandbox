@@ -27,4 +27,6 @@ def isAlienSorted(words: List[str], order: str) -> bool:
 
 words = ["word","world","row"]
 order = "worldabcefghijkmnpqstuvxyz"
-print(isAlienSorted(words,  order))
+expected = False
+actual = isAlienSorted(words,  order)
+print(expected == actual)
