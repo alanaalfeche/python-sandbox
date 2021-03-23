@@ -48,14 +48,3 @@ FROM(
     ) as dept_salary_rank
     FROM Employee JOIN Department on Employee.DepartmentId=Department.Id
 ) x where x.dept_salary_rank <= 3
-
-"""
- department | employee | salary 
-------------+----------+--------
- IT         | Max      |  90000
- IT         | Randy    |  85000
- IT         | Joe      |  85000
- IT         | Will     |  70000
- Sales      | Henry    |  80000
- Sales      | Sam      |  60000
-"""
