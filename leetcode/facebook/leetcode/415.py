@@ -9,26 +9,28 @@ Note:
 """
 def addStrings(num1: str, num2: str) -> str:
     res = []
-
     carry = 0
-    p1 = len(num1) - 1
-    p2 = len(num2) - 1
-    while p1 >= 0 or p2 >= 0:
-        x1 = ord(num1[p1]) - ord('0') if p1 >= 0 else 0
-        x2 = ord(num2[p2]) - ord('0') if p2 >= 0 else 0
+    x0 = ord('0')
 
-        value = (x1 + x2 + carry) % 10
+    n1 = len(num1) - 1
+    n2 = len(num2) - 1
+    while n1 >= 0 or n2 >= 0:
+        x1 = ord(num1[n1]) - x0 if n1 >= 0 else 0
+        x2 = ord(num2[n2]) - x0 if n2 >= 0 else 0
+
+        sum = (x1 + x2 + carry) % 10 
         carry = (x1 + x2 + carry) // 10
 
-        res.append(value)
-        p1 -= 1
-        p2 -= 1
+        res.append(sum)
 
+        n1 -= 1
+        n2 -= 1
+    
     if carry:
         res.append(carry)
 
     return ''.join(str(x) for x in res[::-1])
 
 expected = "108"
-actual = addStrings("9", "99")
+actual = addStrings("99", "9")
 print(actual == expected)
