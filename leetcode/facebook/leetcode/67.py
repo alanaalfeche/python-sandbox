@@ -15,9 +15,9 @@ def bitByBitComputation(a: str, b: str) -> str:
     carry = 0
     answer = []
     for i in range(n-1, -1, -1):
-        if a[i] == '1':
+        if a[i] == "1":
             carry += 1
-        if b[i] == '1':
+        if b[i] == "1":
             carry += 1
 
         if carry % 2 == 1:
@@ -64,9 +64,41 @@ def bitManipulation(a: str, b: str) -> str:
         # reduced version: x, y = x ^ y, (x & y) << 1
     return bin(x)[2:]
 
+def addBinary(a: str, b: str) -> str:
+    res = ""
+    carry = False
+
+    n = max(len(a), len(b))
+    a, b = a.zfill(n), b.zfill(n)
+    
+    for a, b in zip(reversed(a), reversed(b)):
+        count = 0
+        if a == "1": 
+            count += 1
+        if b == "1":
+            count += 1
+        if carry:
+            count += 1
+
+        if count == 0:
+            res += '0'
+            carry = False
+        elif count == 1:
+            res += "1"
+            carry = False
+        elif count == 2:
+            res += '0'
+            carry = True
+        elif count == 3:
+            res += "1"
+            carry = True
+
+    if carry:
+        res += "1"
+
+    return res[::-1]
 
 expected = "100"
-actual = bitManipulation(a="11", b="1")
+actual = addBinary(a="11", b="1")
+print(actual)
 print(expected == actual)
-
-
