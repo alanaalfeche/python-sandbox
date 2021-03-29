@@ -66,13 +66,15 @@ SELECT ROUND(
     AVG(
         CASE
             WHEN MIN(start_date) = transaction_date THEN 1
-            WHEN MAX(start_date) = transaction_date THEN 1
+            WHEN MAX(end_date) = transaction_date THEN 1
             ELSE 0
         END
     )
 , 2) AS PERCENTAGE
 FROM sales
 JOIN promotions on sales.promotion_id = promotions.promotion_id
+
+-- TODO: Q3 Follow Up; How about for each promotion?
 
 -- Q4. Which product had the highest sales with promotions and sales?
 SELECT product_id
