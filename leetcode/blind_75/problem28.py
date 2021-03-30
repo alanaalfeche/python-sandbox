@@ -28,8 +28,23 @@ def max_profit(prices):
     return max(max_profit, 0)
 
 
+def max_profit_easy(prices):
+    # Method: Peak and Valley
+    # TC: O(n), SC: O(1)
+    left = 0
+    right = 1
+    max_profit = 0
+    
+    while right < len(prices):
+        if prices[left] < prices[right]:
+            max_profit = max(max_profit, prices[right] - prices[left])
+            right += 1
+        else:
+            left = right
+            right += 1
+    return max_profit
+
 prices = [7,1,5,3,6,4]
+actual = max_profit_easy(prices)
 expected = 5
-actual = max_profit(prices)
-print(actual)
-print(expected == actual) 
+assert actual is expected
