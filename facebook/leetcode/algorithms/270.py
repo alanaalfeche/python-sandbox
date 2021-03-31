@@ -10,7 +10,9 @@ return the value in the BST that is closest to the target.
 #         self.val = val
 #         self.left = left
 #         self.right = right
-def closestValueIterative(self, root: TreeNode, target: float) -> int:
+def closestValueBinarySearch(self, root: TreeNode, target: float) -> int:
+    # TC: O(H) where h is tree height and h = log(n) ~ O(h) = O(logn)
+    # SC: O(1)
     closestNode = root
     while root:
         if abs(root.val - target) < abs(closestNode.val - target):
