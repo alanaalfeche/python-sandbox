@@ -1,4 +1,6 @@
 """543. Diameter of Binary Tree
+https://leetcode.com/problems/diameter-of-binary-tree/
+
 Given the root of a binary tree, return the length of the diameter of the tree.
 
 The diameter of a binary tree is the length of the longest path between any two nodes in a tree.
@@ -17,7 +19,7 @@ def diameterOfBinaryTree(self, root: TreeNode) -> int:
         right_path = longest_path(node.right)
 
         self.diameter = max(self.diameter, left_path + right_path)
-        return max(left_path+right_path) + 1
+        return max(left_path, right_path) + 1
 
     longest_path(root)
     return self.diameter
