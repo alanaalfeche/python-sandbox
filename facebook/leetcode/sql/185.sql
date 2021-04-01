@@ -1,7 +1,10 @@
 """185. Department Top Three Salaries
+https://leetcode.com/problems/department-top-three-salaries/
 
-The Employee table holds all employees. 
-Every employee has an Id, and there is also a column for the department Id.
+Write a SQL query to find employees who earn the top three salaries in each of the department. 
+For the above tables, your SQL query should return the following rows (order of rows does not matter).
+
+Employee table:
 +----+-------+--------+--------------+
 | Id | Name  | Salary | DepartmentId |
 +----+-------+--------+--------------+
@@ -14,7 +17,7 @@ Every employee has an Id, and there is also a column for the department Id.
 | 7  | Will  | 70000  | 1            |
 +----+-------+--------+--------------+
 
-The Department table holds all departments of the company.
+Department Table:
 +----+----------+
 | Id | Name     |
 +----+----------+
@@ -22,8 +25,7 @@ The Department table holds all departments of the company.
 | 2  | Sales    |
 +----+----------+
 
-Write a SQL query to find employees who earn the top three salaries in each of the department. 
-For the above tables, your SQL query should return the following rows (order of rows does not matter).
+Results Table:
 +------------+----------+--------+
 | Department | Employee | Salary |
 +------------+----------+--------+
@@ -34,17 +36,16 @@ For the above tables, your SQL query should return the following rows (order of 
 | Sales      | Henry    | 80000  |
 | Sales      | Sam      | 60000  |
 +------------+----------+--------+
-
-Explanation:
-In IT department, Max earns the highest salary, both Randy and Joe earn the second highest salary, and Will earns the third highest salary. 
-There are only two employees in the Sales department, Henry earns the highest salary while Sam earns the second highest salary.
 """
 SELECT Department, Employee, Salary
-FROM(
-    SELECT Department.name AS Department, Employee.name AS Employee, Employee.Salary,
-    dense_rank() OVER (
-        PARTITION BY Department.name 
-        ORDER BY Employee.salary DESC
-    ) as dept_salary_rank
-    FROM Employee JOIN Department on Employee.DepartmentId=Department.Id
-) x where x.dept_salary_rank <= 3
+FROM (
+    SELECT 
+        Department.name AS Department,
+        Employee.name AS Employee,
+        Employee.Salary,
+        DENSE_RANK() OVER (
+            PARTITION BY Department.name 
+            ORDER BY Employee.salary DESC
+        ) as dept_salary_rank
+    FROM Employee JOIN Department on Employee.DepartmentId = Department.Id
+) x where x.dept_salary_rank <= 3 -- not accessible from the inner query, this is why it's here
