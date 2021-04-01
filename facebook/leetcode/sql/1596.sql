@@ -1,9 +1,8 @@
-""" 1596. The Most Frequently Ordered Products for Each Customer
- 
+"""1596. The Most Frequently Ordered Products for Each Customer
+https://leetcode.com/problems/the-most-frequently-ordered-products-for-each-customer/
+
 Write an SQL query to find the most frequently ordered product(s) for each customer.
-
 The result table should have the product_id and product_name for each customer_id who ordered at least one order. 
-
 Return the result table in any order.
 
 Customers
