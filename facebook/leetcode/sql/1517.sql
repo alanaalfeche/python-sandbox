@@ -1,4 +1,5 @@
-""" 1517. Find Users With Valid E-Mails
+"""1517. Find Users With Valid E-Mails
+https://leetcode.com/problems/find-users-with-valid-e-mails/
 
 Write an SQL query to find the users who have valid emails.
 
@@ -28,7 +29,6 @@ Result table:
 | 3       | Annabelle | bella-@leetcode.com     |
 | 4       | Sally     | sally.come@leetcode.com |
 +---------+-----------+-------------------------+
-
 """
 
 SELECT *
