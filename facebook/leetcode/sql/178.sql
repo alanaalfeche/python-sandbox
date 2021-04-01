@@ -1,8 +1,11 @@
-""" 178. Rank Scores
+"""178. Rank Scores
+https://leetcode.com/problems/rank-scores
 
 Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. 
 Note that after a tie, the next ranking number should be the next consecutive integer value. 
 In other words, there should be no 'holes' between ranks.
+
+Scores Table:
 +----+-------+
 | Id | Score |
 +----+-------+
@@ -14,7 +17,7 @@ In other words, there should be no 'holes' between ranks.
 | 6  | 3.65  |
 +----+-------+
 
-For example, given the above Scores table, your query should generate the following report (order by highest score):
+Results Table:
 +-------+---------+
 | score | Rank    |
 +-------+---------+
@@ -27,21 +30,9 @@ For example, given the above Scores table, your query should generate the follow
 +-------+---------+
 
 """ 
--- Approach 1: With DENSE_RANK
 SELECT 
     Score, 
     DENSE_RANK() OVER (
         ORDER BY score DESC
     ) as `Rank`
 FROM Scores;
-
--- Approach 2: Without DENSE_RANK
-SELECT 
-    b.Score, 
-    (
-        SELECT COUNT(DISTINCT a.Score)
-        FROM Score a
-        WHERE b.Score <= a.score
-    )
-FROM Scores b 
-ORDER by `Rank`
