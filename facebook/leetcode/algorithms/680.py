@@ -1,6 +1,7 @@
-""" 680. Valid Palindrome II
-Given a non-empty string s, you may delete at most one character. 
+"""680. Valid Palindrome II
+https://leetcode.com/problems/valid-palindrome-ii/
 
+Given a non-empty string s, you may delete at most one character. 
 Judge whether you can make it a palindrome.
 """
 def validPalindrome(s: str) -> bool:
@@ -15,6 +16,4 @@ def validPalindrome(s: str) -> bool:
             right -= 1
     return True 
 
-expected = False
-actual = validPalindrome("abc")
-assert actual is expected
+assert validPalindrome("abc") is False
