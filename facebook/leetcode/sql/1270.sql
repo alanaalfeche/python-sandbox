@@ -1,9 +1,8 @@
-""" 1270. All People Report to the Given Manager 
+"""1270. All People Report to the Given Manager 
+https://leetcode.com/problems/all-people-report-to-the-given-manager/
 
 Write an SQL query to find employee_id of all employees that directly or indirectly report their work to the head of the company.
-
 The indirect relation between managers will not exceed 3 managers as the company is small.
-
 Return result table in any order without duplicates.
 
 Employees table:
@@ -30,14 +29,7 @@ Result table:
 | 7           |
 +-------------+
 """
--- Approach 1. Use 3 joines because indirect relation does not exceed 3 managers
-SELECT e1.employee_id as employee_id
-FROM Employees e1
-JOIN Employees e2 on e1.manager_id = e2.employee_id
-JOIN Employees e3 on e2.manager_id = e3.employee_id
-WHERE e3.manager_id = 1 and e1.employee_id != 1
-
--- Approach 2. Use recursive CTE
+-- Preffered Approach: Recursive CTE
 """
 WITH expression_name (column_list)
 AS
@@ -65,8 +57,7 @@ WITH recursive cte AS (
         e1.employee_id
     FROM 
         Employees e1
-        JOIN cte e2
-            ON (e2.employee_id = e1.manager_id)
+        JOIN cte e2 ON (e2.employee_id = e1.manager_id)
 )
 SELECT employee_id
 FROM cte;
