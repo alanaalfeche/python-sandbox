@@ -1,6 +1,7 @@
-""" 597. Friend Requests I: Overall Acceptance Rate
-Write an SQL query to find the overall acceptance rate of requests, which is the number of acceptance divided by the number of requests. 
+"""597. Friend Requests I: Overall Acceptance Rate
+https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/
 
+Write an SQL query to find the overall acceptance rate of requests, which is the number of acceptance divided by the number of requests. 
 Return the answer rounded to 2 decimals places.
 
 FriendRequest table:
