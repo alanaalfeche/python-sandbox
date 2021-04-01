@@ -1,9 +1,8 @@
-""" 1412. Find the Quiet Students in All Exams
+"""1412. Find the Quiet Students in All Exams
+https://leetcode.com/problems/find-the-quiet-students-in-all-exams/
 
 A 'quite' student is the one who took at least one exam and didn't score neither the high score nor the low score.
-
 Write an SQL query to report the students (student_id, student_name) being 'quiet' in ALL exams.
-
 Don't return the student who has never taken any exam. Return the result table ordered by student_id.
 
 Student table:
@@ -43,15 +42,13 @@ Result table:
 
 WITH cte AS (
     SELECT 
-        exam_id, 
         exam.student_id, 
         student_name,
-        score,
-        RANK() OVER (
+        RANK() OVER ( -- dense_rank() will work too
             PARTITION BY exam_id
             ORDER BY score 
         ) asc_rank,
-        RANK() OVER (
+        RANK() OVER ( -- dense_rank() will work too
             PARTITION BY exam_id
             ORDER BY score
             DESC
