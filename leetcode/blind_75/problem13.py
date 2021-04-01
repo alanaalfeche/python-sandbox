@@ -1,10 +1,8 @@
-'''Problem 13: Maximum Subarray
-
+"""Problem 13: Maximum Subarray
 https://leetcode.com/problems/maximum-subarray/
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
-'''
-
+"""
 
 def max_sub_array(nums):
     best_sum = local_sum = nums[0]
@@ -13,8 +11,5 @@ def max_sub_array(nums):
         best_sum = max(local_sum, best_sum)
     return best_sum
 
-
 nums = [-2,1,-3,4,-1,2,1,-5,4]
-expected = 6
-actual = max_sub_array(nums)
-print(expected == actual)
+assert max_sub_array(nums) == 6
