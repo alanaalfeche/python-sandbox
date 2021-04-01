@@ -1,6 +1,6 @@
 from typing import List
 
-""" 989. Add to Array-Form of Integer
+"""989. Add to Array-Form of Integer
 https://leetcode.com/problems/add-to-array-form-of-integer/
 
 For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  
@@ -36,5 +36,4 @@ def addToArrayForm(A: List[int], K: int) -> List[int]:
 
 
 expected = [1, 2, 3, 4]
-actual = addToArrayForm(A=[1, 2, 0, 0], K=34)
-print(expected == actual)
+assert addToArrayForm(A=[1, 2, 0, 0], K=34) == expected
