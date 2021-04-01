@@ -1,4 +1,5 @@
-""" 610. Triangle Judgement
+"""610. Triangle Judgement
+https://leetcode.com/problems/triangle-judgement/
 
 Write a query to judge whether these three sides can form a triangle
 | x  | y  | z  |
@@ -13,7 +14,6 @@ For the sample data above, your query should return the follow result:
 | 10 | 20 | 15 | Yes      |
 """
 -- A triangle can form if the sum of any of two segments is larger than the third one
-
 -- Approach 1: Use CASE WHEN 
 SELECT 
     x, 
