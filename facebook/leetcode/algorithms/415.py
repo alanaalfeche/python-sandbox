@@ -1,4 +1,6 @@
 """415. Add String
+https://leetcode.com/problems/add-strings
+
 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 
 Note:
@@ -31,6 +33,4 @@ def addStrings(num1: str, num2: str) -> str:
 
     return ''.join(str(x) for x in res[::-1])
 
-expected = "108"
-actual = addStrings("99", "9")
-print(actual == expected)
+assert addStrings("99", "9") == "108"
