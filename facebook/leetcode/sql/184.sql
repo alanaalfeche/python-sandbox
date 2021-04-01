@@ -1,6 +1,10 @@
-""" 184. Department Highest Salary
+"""184. Department Highest Salary
+https://leetcode.com/problems/department-highest-salary/
 
-The Employee table holds all employees. Every employee has an Id, a salary, and there is also a column for the department Id.
+Write a SQL query to find employees who have the highest salary in each of the departments. 
+For the above tables, your SQL query should return the following rows (order of rows does not matter).
+
+Employee Table:
 +----+-------+--------+--------------+
 | Id | Name  | Salary | DepartmentId |
 +----+-------+--------+--------------+
@@ -11,7 +15,7 @@ The Employee table holds all employees. Every employee has an Id, a salary, and 
 | 5  | Max   | 90000  | 1            |
 +----+-------+--------+--------------+
 
-The Department table holds all departments of the company.
+Department Table:
 +----+----------+
 | Id | Name     |
 +----+----------+
@@ -19,8 +23,7 @@ The Department table holds all departments of the company.
 | 2  | Sales    |
 +----+----------+
 
-Write a SQL query to find employees who have the highest salary in each of the departments. 
-For the above tables, your SQL query should return the following rows (order of rows does not matter).
+Results Table:
 +------------+----------+--------+
 | Department | Employee | Salary |
 +------------+----------+--------+
@@ -35,7 +38,9 @@ SELECT
     Salary 
 FROM Employee e 
 JOIN Department d on e.DepartmentId = d.Id 
-WHERE (e.DepartmentId, Salary) IN (   
+-- need a DepartmentId here because if a max salary is found in two departments
+-- it will return the employee from a different department that matches the salary
+WHERE (e.DepartmentId, Salary) IN (
     SELECT 
         DepartmentId,
         MAX(salary)  
