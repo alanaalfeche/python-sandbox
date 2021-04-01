@@ -15,7 +15,7 @@ def subarraySum(nums: List[int], k: int) -> int:
 
     for num in nums:
         cum_sum += num
-        k_count += sum_freq.get(cum_sum-k, 0)
+        k_count += sum_freq.get(cum_sum-k, 0) # contiguous -- doesn't mean the sub array is next to each other
         sum_freq[cum_sum] = sum_freq.get(cum_sum, 0) + 1     
 
     return k_count
