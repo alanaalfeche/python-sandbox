@@ -1,4 +1,5 @@
-""" 1757. Recyclable and Low Fat Products
+"""1757. Recyclable and Low Fat Products
+https://leetcode.com/problems/recyclable-and-low-fat-products/
 
 Write an SQL query to find the ids of products that are both low fat and recyclable.
 
