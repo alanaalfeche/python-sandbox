@@ -1,15 +1,10 @@
-'''Problem 125: Valid Palindrome
-
+"""Problem 125: Valid Palindrome
 https://leetcode.com/problems/valid-palindrome/
 
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
-'''
-
+"""
 
 def is_palindrome(s) -> bool:
-    '''Authored By NDW: https://github.com/nolanwrightdev/blind-75-python/blob/master/problems/problem32.py
-    
-    '''
     left, right = 0, len(s) - 1
     while left < right:
         if not s[left].isalnum():
@@ -23,8 +18,5 @@ def is_palindrome(s) -> bool:
             right -= 1
     return True
 
-
 s = "A man, a plan, a canal: Panama"
-expected = True
-actual = is_palindrome(s)
-print(expected == actual)
+assert is_palindrome(s) is True
