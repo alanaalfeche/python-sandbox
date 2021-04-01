@@ -1,4 +1,6 @@
-""" 627. Swap Salary
+"""627. Swap Salary
+https://leetcode.com/problems/swap-salary/
+
 Write an SQL query to swap all 'f' and 'm' values with a single update statement and no intermediate temp table(s).
 
 Salary table:
