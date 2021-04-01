@@ -1,7 +1,7 @@
 """176. Second Highest Salary
-SQL Schema
-Write a SQL query to get the second highest salary from the Employee table.
+https://leetcode.com/problems/second-highest-salary/submissions/
 
+Write a SQL query to get the second highest salary from the Employee table.
 +----+--------+
 | Id | Salary |
 +----+--------+
@@ -9,8 +9,8 @@ Write a SQL query to get the second highest salary from the Employee table.
 | 2  | 200    |
 | 3  | 300    |
 +----+--------+
-For example, given the above Employee table, the query should return 200 as the second highest salary. If there is no second highest salary, then the query should return null.
 
+For example, given the above Employee table, the query should return 200 as the second highest salary. If there is no second highest salary, then the query should return null.
 +---------------------+
 | SecondHighestSalary |
 +---------------------+
@@ -25,3 +25,14 @@ SELECT(
     ORDER BY Salary DESC
     LIMIT 1 OFFSET 1
 ) AS SecondHighestSalary;
+
+-- Alternative approach:
+SELECT IFNULL(
+    (
+        SELECT salary
+        FROM Employee
+        GROUP BY salary
+        ORDER BY salary DESC
+        LIMIT 1 OFFSET 1
+    ), NULL
+) as SecondHighestSalary
