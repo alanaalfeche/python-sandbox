@@ -102,8 +102,8 @@ def merge(left, right):
         else:
             result.append(right[i])
             j += 1
-    result.extend(left[i:])
-    result.extend(right[j:])
+    result += left[i:]
+    result += right[j:]
     return result
 
 def merge_sort(alist):
