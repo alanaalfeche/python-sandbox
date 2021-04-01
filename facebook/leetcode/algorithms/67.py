@@ -1,4 +1,5 @@
 """67. Add Binary
+https://leetcode.com/problems/add-binary/
 
 Given two binary strings a and b, return their sum as a binary string.
 """
@@ -98,7 +99,4 @@ def addBinary(a: str, b: str) -> str:
 
     return res[::-1]
 
-expected = "100"
-actual = addBinary(a="11", b="1")
-print(actual)
-print(expected == actual)
+assert addBinary(a="11", b="1") == "100"
