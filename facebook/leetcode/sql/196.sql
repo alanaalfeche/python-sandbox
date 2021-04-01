@@ -1,4 +1,5 @@
-""" 196. Delete Duplicate Emails
+"""196. Delete Duplicate Emails
+https://leetcode.com/problems/delete-duplicate-emails/
 
 Write a SQL query to delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.
 +----+------------------+
