@@ -1,6 +1,8 @@
 from typing import List
 
 """953. Verifying an Alien Dictionary
+https://leetcode.com/problems/verifying-an-alien-dictionary/
+
 In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order.
 The order of the alphabet is some permutation of lowercase letters.
 
@@ -27,6 +29,4 @@ def isAlienSorted(words: List[str], order: str) -> bool:
 
 words = ["word","world","row"]
 order = "worldabcefghijkmnpqstuvxyz"
-expected = False
-actual = isAlienSorted(words,  order)
-print(expected == actual)
+assert isAlienSorted(words,  order) is False
