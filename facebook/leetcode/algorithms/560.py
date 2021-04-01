@@ -1,9 +1,10 @@
 from typing import List
 
-""" 560. Subarray Sum Equals K
+"""560. Subarray Sum Equals K
 https://leetcode.com/problems/subarray-sum-equals-k/
 
-Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.
+Given an array of integers nums and an integer k,
+return the total number of continuous subarrays whose sum equals to k.
 """
 def subarraySum(nums: List[int], k: int) -> int:
     sum_freq = {}
@@ -19,6 +20,4 @@ def subarraySum(nums: List[int], k: int) -> int:
 
     return k_count
 
-actual = subarraySum([1,1,1], 2)
-expected = 2
-assert actual is expected
+assert subarraySum([1,1,1], 2) == 2
