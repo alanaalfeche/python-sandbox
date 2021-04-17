@@ -29,4 +29,7 @@ https://runestone.academy/runestone/books/published/pythonds/index.html
 7. rosalind/ 
 Rosalind is a platform for learning bioinformatics and programming through problem solving. 
 Link: http://rosalind.info/problems/list-view/ 
+
+8. miscellaneous/
+Everyday fun times with python
 ```
